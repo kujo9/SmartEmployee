@@ -1,0 +1,584 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* Start: Chat styles */
+.chat {
+  width: 20%;
+  min-width: 330px;
+  max-width: 350px;
+  height: 70vh;
+  max-height: 800px;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @apply absolute left-[25%] -translate-x-1/2 top-[50%] -translate-y-1/2;
+}
+@media (max-width: 920px) {
+  .chat {
+    min-width: 260px;
+    max-width: 300px;
+    height: 36vh;
+  }
+}
+@media (max-width: 650px) {
+  .chat {
+    min-width: 230px;
+    max-width: 250px;
+    height: 50vh;
+    left: 50%;
+    top: 28%;
+  }
+  .logo {
+    top: 28%;
+    height: 180px;
+  }
+}
+/* Chat Title */
+.chat-title {
+  flex: 0 1 45px;
+
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px 10px 10px 50px;
+}
+
+.chat-title h2 {
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+.chat-title h1 {
+  word-spacing: 1px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.chat-title h2 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.chat-title .avatar {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 9px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+}
+
+.chat-title .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Messages */
+.messages {
+  flex: 1 1 auto;
+  color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.messages .messages-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 101%;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* buttons start */
+.individualEdit {
+  display: grid;
+  font-weight: 800;
+  grid-template-columns: repeat(2, 1fr); /* 4 equal-width columns */
+  gap: 10px; /* adjust as needed, it's the space between grid items */
+}
+.card {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  text-align: center;
+  padding: 1.5rem 1.75rem;
+  cursor: pointer;
+  max-width: 300px;
+  color: white;
+  transition: 0.3s ease;
+  font-weight: 300;
+  background: rgba(0, 0, 0, 0.3);
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.button {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  color: #ffffff;
+  padding: 0.7em 1.7em;
+  font-size: 19px;
+  border-radius: 0.5em;
+  background: rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+  font-weight: 200;
+  width: 228px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+.button:active {
+  font-size: 18px;
+}
+
+@media (max-width: 960px) {
+  .card {
+    max-width: 200px;
+  }
+  .button {
+    width: 180px;
+  }
+}
+@media (max-width: 650px) {
+  .buttons {
+    left: 50%;
+    top: 75%;
+  }
+  .card {
+    max-width: 1000px;
+    font-size: 14px;
+  }
+  .button {
+    width: 120px;
+    font-size: 12px;
+  }
+  .button:active {
+    font-size: 11px;
+  }
+}
+@media (max-width: 650px) {
+  .buttons {
+    left: 50%;
+    top: 75%;
+  }
+  .card {
+    max-width: 1000px;
+    font-size: 12px;
+  }
+  .button {
+    width: 120px;
+    font-size: 10px;
+  }
+  .button:active {
+    font-size: 9px;
+  }
+}
+/* buttons end */
+
+/* .contact {
+  position: absolute;
+}
+.feedback {
+  position: absolute;
+}
+.appointment {
+  position: absolute;
+}
+.products {
+  position: absolute;
+}
+.cfeatures {
+  position: absolute;
+}
+.nfeatures {
+  position: absolute;
+} */
+
+/* .button {
+  @apply bg-gradient-to-r from-blue-700 via-blue-800  to-blue-700 rounded-[9px] mt-4 border-neutral-50  w-[150px] text-white h-14;
+} */
+
+.messages .message {
+  clear: both;
+  float: left;
+  padding: 6px 10px 7px;
+  margin: 8px 0;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-left: 35px;
+
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.messages .message-bot .message-content {
+  width: 80%;
+  min-width: 140px;
+  margin-left: 2px;
+  padding: 6px 10px 7px;
+  border-radius: 10px 10px 10px 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.messages .message-loading .message-loading {
+  width: fit-content;
+  margin-left: 2px;
+  padding: 6px 10px 7px;
+  border-radius: 10px 10px 10px 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.messages .message .timestamp {
+  position: absolute;
+  bottom: -15px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.messages .message::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  left: 0;
+  border-right: 7px solid transparent;
+}
+
+.messages .message .avatar {
+  position: absolute;
+  z-index: 1;
+  bottom: -15px;
+  left: -35px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 0 10px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+}
+
+.messages .message .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.messages .message.message-personal {
+  float: right;
+  color: #fff;
+  text-align: right;
+  border-radius: 10px 10px 0 10px;
+  margin-top: 20px;
+  margin-right: 10px;
+  @apply bg-gradient-to-r from-primary-blue via-blue-600 to-blue-700;
+}
+
+.messages .message.message-personal::before {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 5px solid transparent;
+  border-top: 4px solid #1052ec;
+  bottom: -4px;
+}
+
+.messages .message:last-child {
+  margin-bottom: 30px;
+}
+
+.message-box {
+  flex: 0 1 40px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  position: relative;
+  display: flex;
+  height: 40px;
+}
+.message-box .message-input {
+  background: none;
+  border: none;
+  outline: none !important;
+  resize: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  min-height: 17px;
+  margin: 0;
+  padding-right: 20px;
+  width: 50%;
+}
+
+textarea:focus:-webkit-placeholder {
+  color: transparent;
+}
+.message-submit {
+  position: absolute;
+  z-index: 1;
+  top: 9px;
+  right: 10px;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: background 0.2s ease;
+  @apply bg-primary-blue;
+
+  &:hover {
+    @apply bg-blue-700;
+  }
+}
+
+/* End: Chat styles */
+/* Start: Particals */
+
+.bg {
+  height: 100%;
+  margin: 0;
+  background: rgb(44, 47, 59);
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(40, 59, 34),
+    rgb(54, 60, 70),
+    rgb(32, 32, 43)
+  );
+  background: linear-gradient(
+    to right,
+    rgb(38, 51, 61),
+    rgb(50, 55, 65),
+    rgb(33, 33, 78)
+  );
+}
+/* .bg__buttons {
+  background: rgb(44, 47, 59);
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(40, 59, 34),
+    rgb(54, 60, 70),
+    rgb(32, 32, 43)
+  );
+  background: linear-gradient(
+    to right,
+    rgb(38, 51, 61),
+    rgb(50, 55, 65),
+    rgb(33, 33, 78)
+  );
+} */
+/* End: Particals */
+
+/*  Start: Loading */
+#loading {
+  width: 30%;
+  height: 30%;
+  display: block;
+  opacity: 0.9;
+  z-index: 99;
+  text-align: center;
+}
+
+#loading-image {
+  left: 50%;
+  z-index: 100;
+  width: 250px;
+  transform: scaleX(-1);
+}
+
+.preload-fade {
+  opacity: 0 !important;
+  transition: ease-out 0.2s;
+}
+.loader {
+  text-align: center;
+}
+.loader span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 6px;
+  margin: 0 1px;
+  background: #fff;
+  border-radius: 20px;
+  animation: loader 0.8s infinite alternate;
+}
+.loader span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.loader span:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+@keyframes loader {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+}
+
+/*  End: Loading */
+/* Start: RESPONSIVE WEB DESIGN */
+/* 
+@media (max-width: 1800px) {
+  .appointment {
+    position: absolute;
+    top: 30%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+  }
+  .products {
+    position: absolute;
+    top: 50%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+  }
+  .cfeatures {
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    transform: translate(-50%, -50%);
+  }
+  .nfeatures {
+    position: absolute;
+    top: 30%;
+    left: 16%;
+    transform: translate(-50%, -50%);
+  }
+} */
+
+/* @media (max-width: 1049px) {
+  .button {
+    @apply w-[15%] h-[15%];
+  }
+  .contact {
+    @apply w-[13%] h-[10%];
+    top: 6%;
+  }
+  .feedback {
+    @apply w-[13%] h-[10%];
+    bottom: -2%;
+  }
+} */
+
+/* @media (max-width: 832px) {
+  .button {
+    @apply w-[15%] h-[12%];
+  }
+  .contact {
+    @apply w-[13%] h-[10%];
+    top: 6%;
+  }
+  .feedback {
+    @apply w-[13%] h-[10%];
+    bottom: -2%;
+  }
+  .appointment {
+    left: 90%;
+  }
+  .products {
+    left: 90%;
+  }
+  .cfeatures {
+    left: 10%;
+  }
+  .nfeatures {
+    left: 10%;
+  }
+} */
+
+/* @media (max-width: 654px) {
+  .button {
+    @apply w-[21%] h-[12%];
+  }
+  .contact {
+    top: 6%;
+  }
+  .feedback {
+    bottom: -4%;
+  }
+  .appointment {
+    left: 25%;
+    top: 90%;
+  }
+  .products {
+    left: 75%;
+    top: 90%;
+  }
+  .cfeatures {
+    left: 25%;
+    top: 6%;
+  }
+  .nfeatures {
+    left: 75%;
+    top: 6%;
+  }
+} */
+
+/* @media (max-width: 75px) {
+  .button {
+    @apply w-[27%] h-[12%];
+  }
+  .appointment {
+    left: 20%;
+  }
+  .products {
+    left: 80%;
+  }
+  .cfeatures {
+    left: 20%;
+  }
+  .nfeatures {
+    left: 80%;
+  }
+  .messages .message-bot .message-content {
+    width: 80%;
+  }
+} */
+/* End: RESPONSIVE WEB DESIGN */
+
+@media (min-width: 480px) {
+  .card {
+    max-width: 480px;
+    padding: 2rem 2.5rem;
+  }
+}
