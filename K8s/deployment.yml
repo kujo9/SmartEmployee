@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: smartemployee
+ labels:
+ app: smartemployee
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+ app: smartemployee
+ template:
+ metadata:
+ labels:
+ app: smartemployee
+ spec:
+ containers:
+ - name: smartemployee
+ image: demor.azurecr.io/smartemployee
+
+ imagePullPolicy: Always
+ ports:
+ - containerPort: 80
